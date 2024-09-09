@@ -35,7 +35,7 @@ body {
 }
 
 /* 배경 오버레이 레이어 */
-#background-overlay-am, #background-overlay-pm {
+#overlay-am, #overlay-pm {
   position: absolute;
   top: 0;
   left: 0;
@@ -47,13 +47,20 @@ body {
 }
 
 /* AM 배경 */
-#background-overlay-am {
+#overlay-am {
   background: linear-gradient(180deg, #aefaff 0%, #00c3ff 30%, #ffa600 100%);
 }
 
 /* PM 배경 */
-#background-overlay-pm {
+#overlay-pm {
   background: linear-gradient(180deg, #171628 30%, #665C69 100%);
+}
+
+.opacity-0 {
+  opacity: 0!important;
+}
+.opacity-1 {
+  opacity: 1!important;
 }
 
 /* 페이지 전환 애니메이션 */
@@ -86,6 +93,11 @@ button:disabled {
 }
 
 
+#remainingLifeText {
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+}
 #remainingLifeText {
   width: 100%;
   text-align: center;

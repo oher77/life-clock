@@ -1,7 +1,7 @@
 function drawAgeClock(birthdate, lifeExpectancy) {
-  const body = document.body; // 배열의 첫 번째 요소에 접근
   const canvas = document.getElementById('ageClock');
-  const overlay = document.getElementById('background-overlay');
+  const overlayAm = document.getElementById('overlay-am');
+  const overlayPm = document.getElementById('overlay-pm');
   const ctx = canvas.getContext('2d');
   const clockRadius = canvas.width / 2;
   const centerX = canvas.width / 2;
@@ -23,11 +23,11 @@ function drawAgeClock(birthdate, lifeExpectancy) {
   // AM/PM 상태에 따른 배경색 설정 (transition 포함)
   const isAM = hours < 12;
   if (isAM) {
-    body.classList.add('am-background');
-    body.classList.remove('pm-background');
+    overlayAm.classList.add('opacity-1');
+    overlayPm.classList.remove('opacity-1');
   } else {
-    body.classList.add('pm-background');
-    body.classList.remove('am-background');
+    overlayPm.classList.add('opacity-1');
+    overlayAm.classList.remove('opacity-1');
   }
 
   // 시계 초기화
@@ -78,7 +78,7 @@ function drawLifePieChart(birthdate, lifeExpectancy) {
   const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25);
   const remainingYears = lifeExpectancy - ageInYears;
   const remainingRatio = remainingYears / lifeExpectancy;
-  const passedRatio = 1- remainingRatio;
+  const passedRatio = 1 - remainingRatio;
 
   const pieChartCanvas = document.getElementById('lifePieChart');
   const pieCtx = pieChartCanvas.getContext('2d');
@@ -88,18 +88,29 @@ function drawLifePieChart(birthdate, lifeExpectancy) {
   // 지나간 수명 그리기
   pieCtx.beginPath();
   pieCtx.moveTo(100, 100);
-  pieCtx.arc(100, 100, 100, -0.5 * Math.PI, (2 * Math.PI * passedRatio)-(0.5 * Math.PI), false);
+  pieCtx.arc(100, 100, 100, -0.5 * Math.PI, (2 * Math.PI * passedRatio) - (0.5 * Math.PI), false);
   pieCtx.fillStyle = 'gray';
   pieCtx.fill();
 
   // 남은 수명 그리기
   pieCtx.beginPath();
   pieCtx.moveTo(100, 100);
-  pieCtx.arc(100, 100, 100, (2 * Math.PI * passedRatio)-(0.5 * Math.PI), 1.5 * Math.PI, false);
+  pieCtx.arc(100, 100, 100, (2 * Math.PI * passedRatio) - (0.5 * Math.PI), 1.5 * Math.PI, false);
   pieCtx.fillStyle = 'red';
   pieCtx.fill();
 
   // 남은 수명을 24시간으로 환산하여 표시
-  const remainingHours = remainingRatio * 24;
-  document.getElementById('remainingLifeText').innerText = `남은 수명: ${(remainingHours).toFixed(2)}시간 남았습니다.`;
+  //const remainingHours = remainingRatio * 24;
+  //document.getElementById('remainingLifeText').innerText = `남은 수명: ${(remainingHours).toFixed(2)}시간 남았습니다.`;
+
+
+  // 남은 수명을 24시간 기준으로 시, 분, 초로 환산하여 표시
+  const remainingTotalSeconds = remainingRatio * 24 * 60 * 60; // 24시간을 초로 변환
+  const remainingHours = Math.floor(remainingTotalSeconds / 3600); // 시간을 계산
+  const remainingMinutes = Math.floor((remainingTotalSeconds % 3600) / 60); // 분을 계산
+  const remainingSeconds = Math.floor(remainingTotalSeconds % 60); // 초를 계산
+
+  // 남은 수명을 시, 분, 초 형식으로 표시
+  document.getElementById('remainingLifeText').innerText =
+    `남은 수명: ${remainingHours}시간 ${remainingMinutes}분 ${remainingSeconds}초 남았습니다.`;
 }
