@@ -1,5 +1,7 @@
 function drawAgeClock(birthdate, lifeExpectancy) {
+  const body = document.body; // 배열의 첫 번째 요소에 접근
   const canvas = document.getElementById('ageClock');
+  const overlay = document.getElementById('background-overlay');
   const ctx = canvas.getContext('2d');
   const clockRadius = canvas.width / 2;
   const centerX = canvas.width / 2;
@@ -21,11 +23,11 @@ function drawAgeClock(birthdate, lifeExpectancy) {
   // AM/PM 상태에 따른 배경색 설정 (transition 포함)
   const isAM = hours < 12;
   if (isAM) {
-    canvas.classList.add('am-background');
-    canvas.classList.remove('pm-background');
+    body.classList.add('am-background');
+    body.classList.remove('pm-background');
   } else {
-    canvas.classList.add('pm-background');
-    canvas.classList.remove('am-background');
+    body.classList.add('pm-background');
+    body.classList.remove('am-background');
   }
 
   // 시계 초기화

@@ -1,26 +1,82 @@
+a, abbr, address, body, br, button, blockquote, cite, dd, del, div, dl, dt, em, form, html, h1, h2, h3, h4, h5, h6, i, iframe, img, ins, input, label, li, object, ol, option, p, pre, q, select, span, strong, table, tbody, td, textarea, tfoot, th, thead, time, ul, article, aside, details, figcaption, figure, footer, header, nav, section, fieldset
+{
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: medium;
+  vertical-align: baseline;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: medium;
+  vertical-align: baseline;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Noto Sans KR', HelveticaNeue-Light, AppleSDGothicNeo-Light, "segoe ui", "malgun gothic", '맑은 고딕', "microsoft neogothic", arial, sans-serif;
+  overflow-y: scroll;
+  line-height: 2;
+  font-size: 13px;
+  color: white;
+  overflow-wrap: break-word;
+  background-color: #171628;
+  background: linear-gradient(180deg, #171628 30%, #665C69 100%);
+  transition: background-image 1s ease;
+}
+
+/* 배경 오버레이 레이어 */
+#background-overlay-am, #background-overlay-pm {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 1s ease;
+  z-index: -1;  /* 오버레이가 다른 콘텐츠 뒤로 가도록 */
+  opacity: 0;
+}
+
+/* AM 배경 */
+#background-overlay-am {
+  background: linear-gradient(180deg, #aefaff 0%, #00c3ff 30%, #ffa600 100%);
+}
+
+/* PM 배경 */
+#background-overlay-pm {
+  background: linear-gradient(180deg, #171628 30%, #665C69 100%);
+}
+
+/* 페이지 전환 애니메이션 */
+#page-2, #page-3 {
+  transition: opacity 0.5s ease-in-out;
+}
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* 기본 시계 스타일 */
 #ageClock {
   background-color: #f3f3f3;
   display: block;
   margin: 50px auto;
   border-radius: 50%;
-  transition: background-color 0.5s ease; /* 배경색 전환 효과 추가 */
 }
 
 /* 파이차트 스타일 */
 #lifePieChart {
   display: block;
   margin: 50px auto;
-}
-
-/* AM 상태 스타일 */
-.am-background {
-  background-color: black;
-}
-
-/* PM 상태 스타일 */
-.pm-background {
-  background-color: yellow;
 }
 
 /* 버튼 비활성화 스타일 */
