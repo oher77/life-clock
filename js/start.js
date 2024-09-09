@@ -3,16 +3,28 @@ document.getElementById('start-btn').addEventListener('click', function () {
   document.getElementById('page-2').style.display = 'block';
 });
 
-document.getElementById('submit-btn').addEventListener('click', function () {
-  const birthDate = new Date(document.getElementById('birth-date').value);
-  const lifeExpectancy = parseFloat(document.getElementById('life-expectancy').value);
+document.getElementById('submitBtn').addEventListener('click', function() {
+  const birthdate = new Date(document.getElementById('birthdate').value);
+  const lifeExpectancy = parseInt(document.getElementById('lifeExpectancy').value, 10);
 
-  if (!isNaN(birthDate) && lifeExpectancy > 0) {
-    // 입력된 데이터를 바탕으로 계산 수행
-    calculateAndDisplay(birthDate, lifeExpectancy);
-    document.getElementById('page-2').style.display = 'none';
-    document.getElementById('page-3').style.display = 'block';
+  // 입력 검증
+  if (!birthdate || isNaN(birthdate.getTime()) || isNaN(lifeExpectancy) || lifeExpectancy <= 0) {
+    document.getElementById('error-message').style.display = 'block';
+    return;
   } else {
-    alert("유효한 생년월일과 기대 수명을 입력하세요.");
+    document.getElementById('error-message').style.display = 'none';
   }
+
+  // 페이지 전환 및 버튼 비활성화로 피드백 제공
+  document.getElementById('submitBtn').disabled = true;
+  document.getElementById('page-2').style.display = 'block';
+  document.getElementById('page-3').style.display = 'block';
+
+  drawAgeClock(birthdate, lifeExpectancy);
+  drawLifePieChart(birthdate, lifeExpectancy);
+
+  // 일정 시간 후 버튼 다시 활성화
+  setTimeout(() => {
+    document.getElementById('submitBtn').disabled = false;
+  }, 1000);
 });

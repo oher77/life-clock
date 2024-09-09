@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Life Clock</title>
+    <link rel="stylesheet" href="../css/clock-style.css">
     <!-- 외부 JavaScript 파일 로드 -->
-    <script src="../js/start.js" defer></script>
-    <script src="../js/calcul.js" defer></script>
-    <script src="../js/draw.js" defer></script>
+    <script src="js/start.js" defer></script>
+    <script src="js/draw.js" defer></script>
 </head>
 <body>
     <div id="page-1">
@@ -18,20 +18,24 @@
 
     <div id="page-2" style="display:none;">
         <h2>당신의 정보를 입력하세요</h2>
-        <label for="birth-date">생년월일:</label>
-        <input type="date" id="birth-date">
-        <label for="life-expectancy">기대수명(년):</label>
-        <input type="number" id="life-expectancy" min="1" max="150">
-        <button id="submit-btn">제출</button>
+        <label for="birthdate">생년월일:</label>
+        <input type="date" id="birthdate" name="birthdate">
+        <label for="lifeExpectancy">기대수명:</label>
+        <input type="number" id="lifeExpectancy" name="lifeExpectancy" min="1">
+        <button id="submitBtn">제출</button>
+        <p id="error-message" style="color: red; display: none;">입력이 올바르지 않습니다. 생년월일과 기대수명을 올바르게 입력하세요.</p>
     </div>
 
     <div id="page-3" style="display:none;">
+        <h2>당신의 시간</h2>
         <div id="clock">
             <canvas id="ageClock" width="200" height="200"></canvas>
         </div>
+        <h2>남은 수명</h2>
         <div id="pieChart">
             <canvas id="lifePieChart" width="200" height="200"></canvas>
         </div>
+        <p id="remainingLifeText"></p>
     </div>
 </body>
 </html>

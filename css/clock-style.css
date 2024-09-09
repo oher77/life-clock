@@ -1,0 +1,37 @@
+/* 기본 시계 스타일 */
+#ageClock {
+  background-color: #f3f3f3;
+  display: block;
+  margin: 50px auto;
+  border-radius: 50%;
+  transition: background-color 0.5s ease; /* 배경색 전환 효과 추가 */
+}
+
+/* 파이차트 스타일 */
+#lifePieChart {
+  display: block;
+  margin: 50px auto;
+}
+
+/* AM 상태 스타일 */
+.am-background {
+  background-color: black;
+}
+
+/* PM 상태 스타일 */
+.pm-background {
+  background-color: yellow;
+}
+
+/* 버튼 비활성화 스타일 */
+button:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
+
+
+#remainingLifeText {
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+}
