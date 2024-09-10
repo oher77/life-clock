@@ -15,19 +15,24 @@
   <div id="overlay-am"></div>
   <div id="overlay-pm"></div>
   <div id="page-1">
-    <h1>Life Clock</h1>
-    <p>이 서비스는 당신의 기대 수명에 기반한 하루의 시간을 시각적으로 표현합니다.</p>
-    <button id="start-btn">참여하기</button>
+    <h1>당신은 지금 몇 시입니까?</h1>
+    <p>인생을 하루에 비유했을 때
+      지금 당신은 몇시를 지나고 있을까요?</p>
+    <button id="start-btn">내 나이의 현재 시간 보기</button>
   </div>
 
   <div id="page-2" style="display:none;">
-    <h2>당신의 정보를 입력하세요</h2>
-    <label for="birthdate">생년월일:</label>
-    <input type="date" id="birthdate" name="birthdate">
-    <label for="lifeExpectancy">기대수명:</label>
-    <input type="number" id="lifeExpectancy" name="lifeExpectancy" min="1">
-    <button id="submitBtn">제출</button>
+    <h2></h2>
+    <div class="form-item">
+      <label for="birthdate">생년월일</label>
+      <input type="date" id="birthdate" name="birthdate">
+    </div>
+    <div class="form-item">
+      <label for="lifeExpectancy">기대수명</label>
+      <input type="number" id="lifeExpectancy" name="lifeExpectancy" min="1">
+    </div>
     <p id="error-message" style="color: red; display: none;">입력이 올바르지 않습니다. 생년월일과 기대수명을 올바르게 입력하세요.</p>
+    <button id="submitBtn">제출</button>
   </div>
 
   <div id="page-3" style="display:none;">

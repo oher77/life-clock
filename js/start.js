@@ -1,12 +1,13 @@
 document.getElementById('start-btn').addEventListener('click', function () {
   document.getElementById('page-1').style.display = 'none';
-  document.getElementById('page-2').style.display = 'block';
+  document.getElementById('page-2').style.display = 'flex';
 });
 
-document.getElementById('submitBtn').addEventListener('click', function() {
+document.getElementById('submitBtn').addEventListener('click', function () {
   const birthdate = new Date(document.getElementById('birthdate').value);
   const lifeExpectancy = parseInt(document.getElementById('lifeExpectancy').value, 10);
 
+  
   // 입력 검증
   if (!birthdate || isNaN(birthdate.getTime()) || isNaN(lifeExpectancy) || lifeExpectancy <= 0) {
     document.getElementById('error-message').style.display = 'block';
